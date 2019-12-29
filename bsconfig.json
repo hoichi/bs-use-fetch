@@ -1,0 +1,22 @@
+{
+  "name": "bs-use-fetch",
+  "namespace": false,
+  "bsc-flags": [ "-bs-no-version-header", "-bs-super-errors" ],
+  "refmt": 3,
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": false
+    }
+  ],
+  "sources": [
+    {
+      "dir": "src",
+      "public": "all"
+    },
+    {
+      "dir": "examples",
+      "type": "dev"
+    }
+  ]
+}

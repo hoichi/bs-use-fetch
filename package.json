@@ -1,0 +1,28 @@
+{
+  "name": "bs-use-fetch",
+  "version": "0.1.0",
+  "description": "ReasonReact useFetch",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoichi/bs-use-fetch.git"
+  },
+  "keywords": [ "fetch", "browser", "xhr", "bucklescript", "reason", "hook", "react", "reason-react" ],
+  "author": "hoichi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoichi/bs-use-fetch/issues"
+  },
+  "homepage": "https://github.com/hoichi/bs-use-fetch#readme",
+  "devDependencies": {
+    "bs-platform": "^7.0.1"
+  },
+  "peerDependencies": {
+    "bs-platform": "^7.0.1"
+  }
+}
