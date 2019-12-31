@@ -12,6 +12,12 @@ bs-platform@^7.0.1:
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-7.0.1.tgz#1d7b0ef6088b998dceee5db74a7cd8f01c20a3bd"
   integrity sha512-UjStdtHhbtC/l6vKJ1XRDqrPk7rFf5PLYHtRX3akDXEYVnTbN36z0g4DEr5mU8S0N945e33HYts9x+i7hKKpZQ==
 
+bs-use-fetch@hoichi/bs-use-fetch:
+  version "0.1.0"
+  resolved "https://codeload.github.com/hoichi/bs-use-fetch/tar.gz/6911b20c4faf3d6499c385507ab0ace16ccfe0b3"
+  dependencies:
+    bs-fetch "^0.5.0"
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

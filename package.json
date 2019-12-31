@@ -12,16 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/hoichi/bs-use-fetch.git"
   },
-  "keywords": [
-    "fetch",
-    "browser",
-    "xhr",
-    "bucklescript",
-    "reason",
-    "hook",
-    "react",
-    "reason-react"
-  ],
+  "keywords": [ "fetch", "browser", "xhr", "bucklescript", "reason", "hook", "react", "reason-react" ],
   "author": "hoichi",
   "license": "MIT",
   "bugs": {
@@ -33,7 +24,6 @@
     "reason-react": "^0.7.0"
   },
   "peerDependencies": {
-    "bs-platform": "^7.0.1",
     "reason-react": "^0.7.0"
   },
   "dependencies": {

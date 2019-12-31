@@ -1,5 +1,6 @@
 # BuckleScript compiled filed
 lib/
+*.bs.js
 
 # Logs
 logs
