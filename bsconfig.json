@@ -9,14 +9,12 @@
       "in-source": false
     }
   ],
+  "bs-dependencies": [ "bs-fetch" ],
+  "bs-dev-dependencies": [ "reason-react" ],
   "sources": [
     {
       "dir": "src",
       "public": "all"
-    },
-    {
-      "dir": "examples",
-      "type": "dev"
     }
   ]
 }
