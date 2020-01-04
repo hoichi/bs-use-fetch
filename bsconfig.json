@@ -12,6 +12,10 @@
     {
       "dir": "src",
       "public": "all"
+    },
+    {
+      "dir": "examples",
+      "type": "dev"
     }
   ],
   "suffix": ".bs.js"
