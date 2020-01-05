@@ -6,7 +6,11 @@ type t('d, 'e) =
   | Refetching(Belt.Result.t('d, [> fetchError] as 'e))
   | Complete(Belt.Result.t('d, [> fetchError] as 'e));
 
-let useFetch = url => {
+/*
+   Inner implementation. Takes a function that runs fetch and return a promise. The same function is also used as a dependecy, so it’s supposed to be run
+   through useCallback.
+ */
+let useFetch_ = makeAPromise => {
   let (state, setState) = React.useState(_ => Fetching);
 
   React.useEffect1(
@@ -34,16 +38,13 @@ let useFetch = url => {
         };
 
       Js.Promise.(
-        Fetch.fetch(url)
+        makeAPromise()
         |> then_(Fetch.Response.json)
         |> then_(json =>
-             setState(prev => Complete(Ok(json))->withRollback(prev))
-             |> resolve
+             setState(Complete(Ok(json))->withRollback) |> resolve
            )
         |> catch(error =>
-             setState(prev =>
-               Complete(Error(`FetchError(error)))->withRollback(prev)
-             )
+             setState(Complete(Error(`FetchError(error)))->withRollback)
              |> resolve
            )
         |> ignore
@@ -51,11 +52,14 @@ let useFetch = url => {
 
       Some(_ => cancelled := true);
     },
-    [|url|],
+    [|makeAPromise|],
   );
 
   state;
 };
+
+let useFetch = url =>
+  React.useCallback1(() => Fetch.fetch(url), [|url|])->useFetch_;
 
 /**
  * Applies a function to an OK result, i.e., a successfuly fetch data.

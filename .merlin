@@ -1,13 +1,13 @@
 ####{BSB GENERATED: NO EDIT
-FLG -ppx /home/hoichi/dev/@reason/bs-use-fetch/node_modules/bs-platform/lib/bsppx.exe
-S /home/hoichi/dev/@reason/bs-use-fetch/node_modules/bs-platform/lib/ocaml
-B /home/hoichi/dev/@reason/bs-use-fetch/node_modules/bs-platform/lib/ocaml
+FLG -ppx /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-platform/lib/bsppx.exe
+S /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-use-fetch/node_modules/bs-platform/lib/ocaml
+B /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-use-fetch/node_modules/bs-platform/lib/ocaml
 FLG -nostdlib
 FLG -w -30-40+6+7+27+32..39+44+45+101
-S /home/hoichi/dev/@reason/bs-use-fetch/node_modules/bs-fetch/lib/ocaml
-B /home/hoichi/dev/@reason/bs-use-fetch/node_modules/bs-fetch/lib/ocaml
-S /home/hoichi/dev/@reason/bs-use-fetch/node_modules/reason-react/lib/ocaml
-B /home/hoichi/dev/@reason/bs-use-fetch/node_modules/reason-react/lib/ocaml
+S /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-use-fetch/node_modules/bs-fetch/lib/ocaml
+B /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-use-fetch/node_modules/bs-fetch/lib/ocaml
+S /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-use-fetch/node_modules/reason-react/lib/ocaml
+B /home/hoichi/dev/at-reason/test-use-fetch/node_modules/bs-use-fetch/node_modules/reason-react/lib/ocaml
 S src
 B lib/bs/src
 ####BSB GENERATED: NO EDIT}
