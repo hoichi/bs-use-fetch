@@ -1,4 +1,6 @@
-// - http://keleshev.com/composable-error-handling-in-ocaml
+type request = Fetch.request;
+type requestInit = Fetch.requestInit;
+
 type fetchError = [ | `FetchError(Js.Promise.error)];
 
 type t('d, 'e) =
@@ -7,7 +9,8 @@ type t('d, 'e) =
   | Complete(Belt.Result.t('d, [> fetchError] as 'e));
 
 /*
-   Inner implementation. Takes a function that runs fetch and return a promise. The same function is also used as a dependecy, so it’s supposed to be run
+   Inner implementation. Takes a function that runs fetch and return a promise.
+   The same function is also used as a dependecy, so it’s supposed to be run
    through useCallback.
  */
 let useFetch_ = makeAPromise => {
@@ -60,6 +63,21 @@ let useFetch_ = makeAPromise => {
 
 let useFetch = url =>
   React.useCallback1(() => Fetch.fetch(url), [|url|])->useFetch_;
+
+let useFetchWithInit = (url, init) =>
+  React.useCallback2(() => Fetch.fetchWithInit(url, init), (url, init))
+  ->useFetch_;
+
+let useFetchWithRequest = request =>
+  React.useCallback1(() => Fetch.fetchWithRequest(request), [|request|])
+  ->useFetch_;
+
+let useFetchWithRequestInit = (request, init) =>
+  React.useCallback2(
+    () => Fetch.fetchWithRequestInit(request, init),
+    (request, init),
+  )
+  ->useFetch_;
 
 /**
  * Applies a function to an OK result, i.e., a successfuly fetch data.

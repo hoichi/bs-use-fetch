@@ -12,11 +12,10 @@ bs-platform@^7.0.1:
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-7.0.1.tgz#1d7b0ef6088b998dceee5db74a7cd8f01c20a3bd"
   integrity sha512-UjStdtHhbtC/l6vKJ1XRDqrPk7rFf5PLYHtRX3akDXEYVnTbN36z0g4DEr5mU8S0N945e33HYts9x+i7hKKpZQ==
 
-bs-use-fetch@hoichi/bs-use-fetch:
-  version "0.1.0"
-  resolved "https://codeload.github.com/hoichi/bs-use-fetch/tar.gz/6911b20c4faf3d6499c385507ab0ace16ccfe0b3"
-  dependencies:
-    bs-fetch "^0.5.0"
+decco@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/decco/-/decco-1.1.1.tgz#69e252c3bdf1b6f4f10dd115ba44f25908d0033c"
+  integrity sha512-hif221MrEzLcjguORCYml7CAfCwWap6HuRI4x0G9TSLRoJkkDKc/Qx01JleOzMubOWFK4dbJNmKXR4+S/r3obw==
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
