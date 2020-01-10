@@ -107,3 +107,11 @@ let toLoadingDataAndError =
   | Refetching(Error(e)) => (true, None, Some(e))
   | Complete(Ok(r)) => (false, Some(r), None)
   | Complete(Error(e)) => (false, None, Some(e));
+
+
+module HeadersInit = Fetch.HeadersInit;
+module Headers = Fetch.Headers;
+module BodyInit = Fetch.BodyInit;
+module Body = Fetch.Body;
+module RequestInit = Fetch.RequestInit;
+module Request = Fetch.Request;

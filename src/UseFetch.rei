@@ -2,7 +2,10 @@
  * The {{: https://developer.mozilla
  .org/en-US/docs/Web/API/Request } Request object }
  * Reexported from [ bs-fetch ] for convenience.
- * Created using [ UseFetch.RequestInit.make() ] or suchlike.
+ * Created using [ UseFetch.RequestInit.make() ] or suchlike. Please note
+ that there’s no built-in memoization neither in those constructor functions
+ nore in the hooks, so if you call them inside your component, it’s your
+ responsibility to wrap them in [ useMemo ] to prevent an infinite effect loop.
  */
 type request = Fetch.request;
 
@@ -11,7 +14,10 @@ type request = Fetch.request;
     .org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters } init
     options} object.
   * Rexported from [ bs-fetch ].
-  * Created using [ UseFetch.RequestInit.make() ]
+  * Created using [ UseFetch.RequestInit.make() ]. Please note that the
+  constructor functions is not memoized out of the box, so if you call it
+  inside your component, it’s your responsibility to wrap them in [ useMemo
+  ] to prevent an infinite effect loop.
  */
 type requestInit = Fetch.requestInit;
 
@@ -88,8 +94,13 @@ let mapOk: (t('a, 'e), 'a => result('b, 'e)) => t('b, 'e);
  */
 let toLoadingDataAndError: t('d, 'e) => (bool, option('d), option('e));
 
-/*******************************************************************
-  [TODO]
+/**
   Some modules reexported from bs-fetch for convenience:
   you probably don’t want to clutter your package.json and bsconfig
  *******************************************************************/
+module HeadersInit = Fetch.HeadersInit;
+module Headers = Fetch.Headers;
+module BodyInit = Fetch.BodyInit;
+module Body = Fetch.Body;
+module RequestInit = Fetch.RequestInit;
+module Request = Fetch.Request;
