@@ -1,6 +1,11 @@
-# BuckleScript compiled filed
+# BuckleScript generated filed
 lib/
 *.bs.js
+.merlin
+.bsb.lock
+
+# Hello Mac
+.DS_Store
 
 # Logs
 logs

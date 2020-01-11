@@ -8,6 +8,9 @@ A ReasonReact useFetch hook. It:
   - lets you use a JSON decoding library of your choice
   - lets you compose fetch errors and decoding error via [polymorphic variants](http://keleshev.com/composable-error-handling-in-ocaml)
 
+It seems workable, especially for getting data, but expect some breaking
+changes before v1.0.
+
 ## Basic usage
 
 ```reason
@@ -61,9 +64,18 @@ Or, if you prefer the style prevalent in JS-land,
   // ...
 ```
 
+## Documentation
+
+See `UseFetch.rei`.
+
 ## TODOs
 
-- [ ] Add request/init parameters
+- [x] Add request/init parameters
+- [ ] [Support submitting](https://github.com/hoichi/bs-use-fetch/issues/2)
 - [ ] `toLoadingAndResult` helper
 - [ ] use `AbortController` (`bs-fetch` has [a stale PR](https://github.com/reasonml-community/bs-fetch/pull/15) for same)
+- [ ] tests (will probably require bindings for something like
+      [jest-fetch-mock](https://github.com/jefflau/jest-fetch-mock))
+- [ ] Generate API docs (the comments in the `.rei` should already be
+      odoc-compatible.
 - [ ] React Suspense compatibility?

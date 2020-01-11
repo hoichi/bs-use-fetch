@@ -1,24 +1,3 @@
-module Decode = {
-  type decodeError = [ | `DecodeError(Decco.decodeError)];
-
-  let mapDecodingError =
-    fun
-    | Ok(x) => Ok(x)
-    | Error(e) => Error(`DecodeError(e));
-};
-
-module GhRepo = {
-  [@decco]
-  type repo = {
-    [@decco.key "full_name"]
-    fullName: string,
-    [@decco.key "html_url"]
-    htmlUrl: string,
-  };
-  [@decco]
-  type t = {items: array(repo)};
-};
-
 module Component = {
   [@react.component]
   let make = () => {
@@ -30,7 +9,7 @@ module Component = {
       // use whichever decoding library you like
       ->mapOk(r => GhRepo.t_decode(r)->Decode.mapDecodingError)
       ->(
-          // below, no distinction is made between fetching and refetching,
+          // below, no distinction is made between fetching and refetcsplithing,
           // but you're free to make other UX choices
           fun
           | Fetching => ReasonReact.string("Loading...")

@@ -6,8 +6,12 @@
     "in-source": true
   },
   "bsc-flags": [ "-bs-no-version-header", "-bs-super-errors" ],
+  "ppx-flags": [ "decco/ppx"],
   "refmt": 3,
-  "bs-dependencies": [ "bs-fetch", "reason-react" ],
+  "bs-dependencies": [ "bs-fetch", "decco", "reason-react" ],
+  "reason": {
+    "react-jsx": 3
+  },
   "sources": [
     {
       "dir": "src",
@@ -15,6 +19,7 @@
     },
     {
       "dir": "examples",
+      "subdirs": true,
       "type": "dev"
     }
   ],
