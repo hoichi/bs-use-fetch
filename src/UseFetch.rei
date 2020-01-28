@@ -2,12 +2,19 @@
  * The {{: https://developer.mozilla
  .org/en-US/docs/Web/API/Request } Request object }
  * Reexported from [ bs-fetch ] for convenience.
- * Created using [ UseFetch.RequestInit.make() ] or suchlike. Please note
+ * Created using [ UseFetch.Request.make() ] or suchlike. Please note
  that there’s no built-in memoization neither in those constructor functions
  nore in the hooks, so if you call them inside your component, it’s your
  responsibility to wrap them in [ useMemo ] to prevent an infinite effect loop.
  */
 type request = Fetch.request;
+
+/**
+ * Resource, the first Fetch parameter. Either a url string, or a Fetch object.
+ */
+type fetchResource =
+  | Url(string)
+  | Request(request);
 
 /**
  * The {{: https://developer.mozilla
@@ -40,42 +47,15 @@ type t('d, 'e) =
   | Complete(Belt.Result.t('d, [> fetchError] as 'e));
 
 /**
- * Probably the simplest fetch form (wraps Fetch.fetch).
- * @param url (string) The full request url
- * @return t(Js.Json.t, [> fetchError])
- */
-let useFetch: string => t(Js.Json.t, 'e);
-
-/**
- * Adds the init object (some options, basically).
- * Wraps Fetch.fetchWithInit
- * @param url (string) The full request url
- * @param init (requestInit) The options object.
- * @return t(Js.Json.t, [> fetchError])
- */
-let useFetchWithInit: (string, requestInit) => t(Js.Json.t, 'e);
-
-/**
- * Wraps Fetch.fetchWithRequest. Uses a request object as a resourse
- * @param request (UseFetch.request) The {{: https://developer.mozilla
- .org/en-US/docs/Web/API/Request } Request object}. Created using
- [ UseFetch.RequestInit.make() ] or suchlike.
- * @param init (requestInit) The options object.
- * @return t(Js.Json.t, [> fetchError])
- */
-let useFetchWithRequest: request => t(Js.Json.t, 'e);
-
-/**
- * Wraps Fetch.fetchWithRequestInit.
- * @param request (UseFetch.request) The {{: https://developer.mozilla
- .org/en-US/docs/Web/API/Request } Request object}. Created using
- [ UseFetch.RequestInit.make() ] or suchlike.
- * @param init (Fetch.requestInit) {{:https://developer.mozilla
+ * The hook that runs a fetch right away.
+ * @param resource (fetchResource). Either Url(string) or Request(request) (aka {{: https://developer.mozilla
+ .org/en-US/docs/Web/API/Request } request object}).
+ * @param ~init (requestInit=?) {{:https://developer.mozilla
  .org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters} Init
  options}. Created [ using UseFetch.RequestInit.make() ]
- * @return [ t(Js.Json.t, [> fetchError]) ]
+ * @return t(Js.Json.t, [> fetchError])
  */
-let useFetchWithRequestInit: (request, requestInit) => t(Js.Json.t, 'e);
+let useFetch: (~init: requestInit=?, fetchResource) => t(Js.Json.t, 'e);
 
 /**
  * Maps an successful fetch data. Most likely usage is to decode json.

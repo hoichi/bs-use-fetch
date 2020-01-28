@@ -15,7 +15,7 @@ let make = () => {
 
   let fetchResult =
     UseFetch.(
-      useFetchWithRequest(request)
+      useFetch(Request(request))
       ->mapOk(r => GhRepo.t_decode(r)->Decode.mapDecodingError)
     );
 

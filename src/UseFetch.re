@@ -1,4 +1,9 @@
 type request = Fetch.request;
+
+type fetchResource =
+  | Url(string)
+  | Request(request);
+
 type requestInit = Fetch.requestInit;
 
 type fetchError = [ | `FetchError(Js.Promise.error)];
@@ -61,15 +66,8 @@ let useFetch_ = makeAPromise => {
   state;
 };
 
-let useFetch = url =>
-  React.useCallback1(() => Fetch.fetch(url), [|url|])->useFetch_;
-
 let useFetchWithInit = (url, init) =>
   React.useCallback2(() => Fetch.fetchWithInit(url, init), (url, init))
-  ->useFetch_;
-
-let useFetchWithRequest = request =>
-  React.useCallback1(() => Fetch.fetchWithRequest(request), [|request|])
   ->useFetch_;
 
 let useFetchWithRequestInit = (request, init) =>
@@ -78,6 +76,14 @@ let useFetchWithRequestInit = (request, init) =>
     (request, init),
   )
   ->useFetch_;
+
+let defaultInit = Fetch.RequestInit.make();
+
+let useFetch = (~init=defaultInit, resource) =>
+  switch (resource) {
+  | Url(u) => useFetchWithInit(u, init)
+  | Request(r) => useFetchWithRequestInit(r, init)
+  };
 
 /**
  * Applies a function to an OK result, i.e., a successfuly fetch data.
@@ -107,7 +113,6 @@ let toLoadingDataAndError =
   | Refetching(Error(e)) => (true, None, Some(e))
   | Complete(Ok(r)) => (false, Some(r), None)
   | Complete(Error(e)) => (false, None, Some(e));
-
 
 module HeadersInit = Fetch.HeadersInit;
 module Headers = Fetch.Headers;
