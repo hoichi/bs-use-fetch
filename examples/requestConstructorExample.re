@@ -27,6 +27,7 @@ let make = () => {
       />
     </div>
     {switch (fetchResult) {
+     | Idle => ReasonReact.null
      | Fetching
      | Refetching(_) => ReasonReact.string("Loading...")
      | Complete(Error(_)) =>

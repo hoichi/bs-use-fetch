@@ -15,7 +15,7 @@ module Component = {
             fun
             // below, no distinction is made between fetching and refetcsplithing,
             // but you're free to make other UX choices
-
+            | Idle => ReasonReact.null
             | Fetching => ReasonReact.string("Loading...")
             | Refetching(Ok(({items}: GhRepo.t)))
             | Complete(Ok(({items}: GhRepo.t))) =>

@@ -12,7 +12,7 @@ type request = Fetch.request;
 /**
  * Resource, the first Fetch parameter. Either a url string, or a Fetch object.
  */
-type fetchResource =
+type resource =
   | Url(string)
   | Request(request);
 
@@ -42,6 +42,7 @@ type fetchError = [ | `FetchError(Js.Promise.error)];
  possible.
  */
 type t('d, 'e) =
+  | Idle
   | Fetching
   | Refetching(Belt.Result.t('d, [> fetchError] as 'e))
   | Complete(Belt.Result.t('d, [> fetchError] as 'e));
@@ -55,7 +56,7 @@ type t('d, 'e) =
  options}. Created [ using UseFetch.RequestInit.make() ]
  * @return t(Js.Json.t, [> fetchError])
  */
-let useFetch: (~init: requestInit=?, fetchResource) => t(Js.Json.t, 'e);
+let useFetch: (~init: requestInit=?, resource) => t(Js.Json.t, 'e);
 
 /**
  * Maps an successful fetch data. Most likely usage is to decode json.
