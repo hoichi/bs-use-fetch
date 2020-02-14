@@ -99,6 +99,8 @@ let useFetchWithRequestInit = (request, init) =>
 
 let defaultInit = Fetch.RequestInit.make();
 let defaultDerive = (_, r, i) => (r, i);
+type deriveFetchParams('a) =
+  ('a, resource, requestInit) => (resource, requestInit);
 
 let useFetch = (~init=defaultInit, resource) =>
   switch (resource) {
@@ -107,7 +109,11 @@ let useFetch = (~init=defaultInit, resource) =>
   };
 
 let useSubmit =
-    (~init=defaultInit, ~deriveFetchParams=defaultDerive, resource)
+    (
+      ~init=defaultInit,
+      ~deriveFetchParams: deriveFetchParams('a)=defaultDerive,
+      resource,
+    )
     : (t(Js.Json.t, 'e), 'a => unit, unit => unit) => {
   let (state, setState) = React.useState(FetchState.init);
   let cancelled = ref(false); // not that the value matters before submit starts

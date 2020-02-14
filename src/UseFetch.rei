@@ -59,6 +59,39 @@ type t('d, 'e) =
 let useFetch: (~init: requestInit=?, resource) => t(Js.Json.t, 'e);
 
 /**
+ * A type of custom functions that derives resource and/or requestInit from
+ * the submit function argumets. The logic behind that is that params
+ * supplied to the submit call can change with user input etc.,
+ * but the bulk of the fetch config is more convenient to provide upfront
+ * and not in the middle of your JSX
+ */
+type deriveFetchParams('a) =
+  ('a, resource, requestInit) => (resource, requestInit);
+
+/**
+ * This hook fetches when you run the submit function it returns.
+ * Note that whether it actualy submits or just queries depends on the options
+ * you provide
+ * @param resource (fetchResource). Either Url(string) or Request(request) (aka {{: https://developer.mozilla
+ .org/en-US/docs/Web/API/Request } request object}).
+ * @param ~init (requestInit=?) {{:https://developer.mozilla
+ .org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters} Init
+ options}. Created [ using UseFetch.RequestInit.make() ]
+ * @param ~deriveFetchParams (deriveFetchparams=?) See the type description
+ * @return (t(Js.Json.t, 'e), 'a => unit, unit => unit) A tuple of:
+ * - the fetch state
+ * - the submit function
+ * - the abort function
+ */
+let useSubmit:
+  (
+    ~init: requestInit=?,
+    ~deriveFetchParams: deriveFetchParams('a)=?,
+    resource
+  ) =>
+  (t(Js.Json.t, 'e), 'a => unit, unit => unit);
+
+/**
  * Maps an successful fetch data. Most likely usage is to decode json.
  * @param t ([ t ]) The value returned by [ useFetch... ]
  * @param f ([ 'a => result('b, 'e) ])
