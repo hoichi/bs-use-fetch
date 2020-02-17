@@ -17,7 +17,6 @@ lerna-debug.log*
 
 # Dependency directories
 node_modules/
-jspm_packages/
 
 # Optional npm cache directory
 .npm
@@ -28,3 +27,6 @@ jspm_packages/
 # dotenv environment variables file
 .env
 .env.test
+
+# IDEs
+.idea/

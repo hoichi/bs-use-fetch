@@ -1,27 +1,43 @@
 {
-  "name": "bs-use-fetch",
-  "namespace": false,
-  "package-specs": {
-    "module": "commonjs",
-    "in-source": true
-  },
-  "bsc-flags": [ "-bs-no-version-header", "-bs-super-errors" ],
-  "ppx-flags": [ "decco/ppx"],
-  "refmt": 3,
-  "bs-dependencies": [ "bs-fetch", "decco", "reason-react" ],
-  "reason": {
-    "react-jsx": 3
-  },
-  "sources": [
-    {
-      "dir": "src",
-      "public": "all"
-    },
-    {
-      "dir": "examples",
-      "subdirs": true,
-      "type": "dev"
-    }
-  ],
-  "suffix": ".bs.js"
+	"name": "bs-use-fetch",
+	"namespace": false,
+	"package-specs": {
+		"module": "commonjs",
+		"in-source": true
+	},
+	"bsc-flags": [
+		"-bs-no-version-header",
+		"-bs-super-errors"
+	],
+	"ppx-flags": [ "decco/ppx"],
+	"refmt": 3,
+	"bs-dependencies": [
+		"bs-fetch",
+		"reason-react"
+	],
+	"bs-dev-dependencies": [
+		"@glennsl/bs-jest",
+		"bs-jest-fetch-mock",
+		"decco",
+		"reason-hooks-testing-library"
+	],
+	"reason": {
+		"react-jsx": 3
+	},
+	"sources": [
+		{
+			"dir": "src",
+			"public": "all"
+		},
+		{
+			"dir": "tests",
+			"type": "dev"
+		},
+		{
+			"dir": "examples",
+			"subdirs": true,
+			"type": "dev"
+		}
+	],
+	"suffix": ".bs.js"
 }
