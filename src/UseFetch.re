@@ -140,11 +140,7 @@ let useSubmit =
     Js.Promise.(
       fetchPromise
       |> then_(Fetch.Response.json)
-      |> then_(
-           // finish fetching
-           json =>
-           setState(withRollback(Ok(json))) |> resolve
-         )
+      |> then_(json => setState(withRollback(Ok(json))) |> resolve)
       |> catch(error =>
            setState(withRollback(Error(`FetchError(error)))) |> resolve
          )

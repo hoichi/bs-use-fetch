@@ -49,7 +49,7 @@
       "<rootDir>/setup.jest.js"
     ],
     "testMatch": [
-      "**/tests/**/*.js"
+      "**/tests/**/*_test.bs.js"
     ]
   }
 }

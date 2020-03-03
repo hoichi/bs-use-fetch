@@ -376,9 +376,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.8.22":
-  version "16.9.19"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.19.tgz#c842aa83ea490007d29938146ff2e4d9e4360c40"
-  integrity sha512-LJV97//H+zqKWMms0kvxaKYJDG05U2TtQB3chRLF8MPNs+MQh/H1aGlyDUxjaHvu08EAGerdX2z4LTBc7ns77A==
+  version "16.9.21"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.21.tgz#99e274e2ecfab6bb93920e918341daa3198b348d"
+  integrity sha512-xpmenCMeBwJRct8vmIfczlgdOXWIWASoOM857kxKfHlVQvDltRh7IFRVfGws79iO2jkNPXOeWREyKoClzhBaQA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -2641,12 +2641,17 @@ realpath-native@^1.1.0:
     util.promisify "^1.0.0"
 
 reason-hooks-testing-library@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/reason-hooks-testing-library/-/reason-hooks-testing-library-0.2.0.tgz#6d6c2cd5e8725ab74ebe8c6f25f484afd34b65f6"
-  integrity sha512-lWWszdGYdyNmiPthq2OJKUu1HVufxZDOBaamedDk274KD/Bl1HDSo+X3QIeLAoyJHduboUPuhitdYpiINHLL+g==
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/reason-hooks-testing-library/-/reason-hooks-testing-library-0.2.1.tgz#75b146b98e0cbea41b6120ad6022850c27a0f1e3"
+  integrity sha512-LpiP8LD/3quqfZ+/reqG9AjgYHQZA54wmkQoqv43jznzstlWoeXI3Ftqoq96PQ3gN35piif56QBGYgpRu2v3Pw==
   dependencies:
     "@testing-library/react-hooks" "^1.1.0"
     react-test-renderer "^16.8.6"
+
+reason-promise@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/reason-promise/-/reason-promise-1.0.2.tgz#22b9bb4097ce511190182b948aef11427d5b8b86"
+  integrity sha512-j8DWV+71wNEKQmyW6zBOowIZq1Qec5CDWyLI37BvgOmAZgRFGFQ1MaJnbhqDe3JsYmaGyqdNMmpCJLl9EDbDAg==
 
 reason-react@^0.7.0:
   version "0.7.0"

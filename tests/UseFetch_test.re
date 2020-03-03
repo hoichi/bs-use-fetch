@@ -3,15 +3,13 @@ open Expect;
 //open ReasonHooksTestingLibrary;
 open BsJestFetchMock;
 
-module T = ReasonHooksTestingLibrary.Testing;
-
 open UseFetch;
 
 beforeEach(() => JestFetchMock.resetMocks());
 
 describe("useSubmit", () => {
   let container =
-    T.renderHook(
+    HooksTesting.renderHook(
       () =>
         useSubmit(
           Url(
@@ -21,21 +19,30 @@ describe("useSubmit", () => {
       (),
     );
 
-  test("Initial state", () => {
-    let (state, _, _) = T.Result.(container->result->current);
+  let HooksTesting.RenderResult.{result, waitForNextUpdate} = container;
 
-    expect(state) |> toBe(Idle);
-  });
+  testAsync("Sucsessful submitting", finish => {
+    JestFetchMock.mockResponse(~response=Str({|{ "body": "ok"}|}), ());
 
-  test("Submitting", () => {
-    let (_, submit, _) = T.Result.(container->result->current);
+    let (stateInitial, submit, _) = result.current;
+    HooksTesting.act(submit);
+    let (stateFetching, _, _) = result.current;
 
-    T.act(() => {
-      JestFetchMock.mockResponse(~response=Str({|{ "body": "ok"}|}), ());
-      submit();
-    });
+    HooksTesting.actAsync(() => waitForNextUpdate(.))
+    |> Js.Promise.(
+         then_(_ => {
+           let (stateDone, _, _) = result.current;
 
-    let (state, _, _) = T.Result.(container->result->current);
-    expect(state) |> toBe(Fetching);
+           expect((stateInitial, stateFetching, stateDone))
+           |> toEqual((
+                Idle,
+                Fetching,
+                Complete(Ok(Js.Json.parseExn({|{ "body": "ok"}|}))),
+              ))
+           |> finish
+           |> resolve;
+         })
+       )
+    |> ignore;
   });
 });
