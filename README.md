@@ -1,6 +1,6 @@
 # bs-use-fetch
 
-A ReasonReact useFetch hook. It:
+A React useFetch hook. It:
 - wraps [bs-fetch](https://github.com/reasonml-community/bs-fetch)
 - is composable
   - uses a `result` type
@@ -27,23 +27,23 @@ let make = () => {
         // below, no distinction is made between fetching and refetching,
         // but you're free to make other UX choices
         fun
-        | Fetching => ReasonReact.string("Loading...")
+        | Fetching => React.string("Loading...")
         | Refetching(Ok(({items}: GhRepo.t)))
         | Complete(Ok(({items}: GhRepo.t))) =>
           <ul>
             {Belt.Array.map(items, ({fullName, htmlUrl}: GhRepo.repo) =>
                <li key=fullName>
-                 <a href=htmlUrl> {ReasonReact.string(fullName)} </a>
+                 <a href=htmlUrl> {React.string(fullName)} </a>
                </li>
              )
              ->React.array}
           </ul>
         | Refetching(Error(`FetchError(_)))
         | Complete(Error(`FetchError(_))) =>
-          <h2> {ReasonReact.string("Fetch error!")} </h2>
+          <h2> {React.string("Fetch error!")} </h2>
         | Refetching(Error(`DecodeError((err: Decco.decodeError))))
         | Complete(Error(`DecodeError((err: Decco.decodeError)))) =>
-          <h2> {ReasonReact.string("Decode error!")} </h2>
+          <h2> {React.string("Decode error!")} </h2>
   );
 };
 ```
