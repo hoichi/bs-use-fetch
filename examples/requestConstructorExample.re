@@ -28,14 +28,14 @@ let make = () => {
     </div>
     {switch (fetchResult) {
      | Fetching
-     | Refetching(_) => ReasonReact.string("Loading...")
+     | Refetching(_) => React.string("Loading...")
      | Complete(Error(_)) =>
-       <div> {ReasonReact.string("Something went wrong")} </div>
+       <div> {React.string("Something went wrong")} </div>
      | Complete(Ok(({items}: GhRepo.t))) =>
        <ul>
          {Belt.Array.map(items, ({fullName, htmlUrl}: GhRepo.repo) =>
             <li key=fullName>
-              <a href=htmlUrl> {ReasonReact.string(fullName)} </a>
+              <a href=htmlUrl> {React.string(fullName)} </a>
             </li>
           )
           ->React.array}
