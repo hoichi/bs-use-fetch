@@ -1,6 +1,6 @@
 # bs-use-fetch
 
-A React useFetch hook. It:
+A Reason/Rescript React useFetch hook. It:
 - wraps [bs-fetch](https://github.com/reasonml-community/bs-fetch)
 - is composable
   - uses a `result` type
